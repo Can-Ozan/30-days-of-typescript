@@ -176,3 +176,7 @@ This project is licensed under the MIT License. For details, see the `LICENSE` f
 💡 **Note**: This project is under continuous development. Follow us on GitHub for new features and improvements!
 
 🌟 **If you like the project, don't forget to star it!**
+
+
+# 30-days-of-typescript
+30-Day TypeScript Code Collection

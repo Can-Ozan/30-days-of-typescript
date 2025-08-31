@@ -32,7 +32,7 @@ A modern and dynamic note-taking web application. Categorize, tag, search, and o
 ## 🖼️ Project Screenshots
 
 ### Main Interface
-![SwiftNote Studio Interface](/images/arayüz.png)
+![SwiftNote Studio Interface](Day #04 - swiftnote-studio/images/arayüz.png)
 
 ## 🚀 Installation
 

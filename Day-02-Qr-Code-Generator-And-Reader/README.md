@@ -36,9 +36,9 @@ A modern, feature-rich QR code generator and scanner application with API integr
 ## 🖼️ Project Screenshots
 
 ### Main Interface
-![Day-#02-Qr-Code-Generator-And-ReaderInterface](Day-%2302-Qr-Code-Generator-And-Reader/images/arayüz.png)
-![Day-#02-Qr-Code-Generator-And-ReaderInterface](Day-%2302-Qr-Code-Generator-And-Reader/images/arayüz1.png)
-![Day-#02-Qr-Code-Generator-And-ReaderInterface](Day-%2302-Qr-Code-Generator-And-Reader/images/image.png)
+![Day-#02-Qr-Code-Generator-And-ReaderInterface]()
+![Day-#02-Qr-Code-Generator-And-ReaderInterface]()
+![Day-#02-Qr-Code-Generator-And-ReaderInterface]()
 
 ### 📱 Mobile & Cross-Platform
 - **Native Camera Access**: Capacitor integration for native device features

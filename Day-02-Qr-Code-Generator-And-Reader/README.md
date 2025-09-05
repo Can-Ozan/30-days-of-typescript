@@ -1,4 +1,4 @@
-# QR Scanner - Advanced QR Code Generator, Scanner & API Tool
+# QR Scanner - Advanced QR Code Generator, Scanner
 
 A modern, feature-rich QR code generator and scanner application with API integration capabilities. Built with React, TypeScript, and Capacitor for cross-platform compatibility. Generate custom-sized QR codes, scan with camera, and integrate with external APIs - all with beautiful dark/light theme support.
 

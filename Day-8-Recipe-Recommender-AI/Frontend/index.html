@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarif Önerici AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧑‍🍳 AI Tarif Önerici</h1>
+            <p>Elinizdeki malzemeleri girin, size özel tarifler önerelim!</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <label for="ingredients">Malzemelerinizi girin (virgülle ayırarak):</label>
+                <textarea 
+                    id="ingredients" 
+                    placeholder="Örnek: domates, soğan, sarımsak, zeytinyağı, tuz..."
+                    rows="4"
+                ></textarea>
+                <button id="getRecipes">Tarif Önerilerini Al</button>
+            </div>
+
+            <div class="loading hidden" id="loading">
+                <div class="spinner"></div>
+                <p>AI tarifleri hazırlıyor...</p>
+            </div>
+
+            <div class="recipes-section hidden" id="recipesSection">
+                <h2>Önerilen Tarifler</h2>
+                <div id="recipesList" class="recipes-list"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Summarizer AI</title>
+    <link rel="stylesheet" href="Frontend/style.css"/>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>📧 Email Summarizer AI</h1>
+        <p>Uzun e-postalarınızı yapay zeka ile kısaca özetleyin</p>
+      </header>
+
+      <div class="app-container">
+        <div class="input-section">
+          <textarea
+            id="emailText"
+            placeholder="E-postanızı buraya yapıştırın..."
+            rows="10"
+          ></textarea>
+          <div class="controls">
+            <input
+              type="number"
+              id="maxLength"
+              value="150"
+              min="50"
+              max="500"
+            />
+            <span>kelime</span>
+            <button id="summarizeBtn">Özetle</button>
+          </div>
+        </div>
+
+        <div class="result-section" id="resultSection" style="display: none">
+          <h3>📋 E-posta Özeti</h3>
+          <div class="summary-content" id="summaryContent"></div>
+          <button id="copyBtn">Kopyala</button>
+          <button id="newBtn">Yeni Özet</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

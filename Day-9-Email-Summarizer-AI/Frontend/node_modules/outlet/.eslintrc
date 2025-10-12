@@ -1,0 +1,46 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+    "indent": [
+      2,
+      2
+    ],
+    "quotes": [
+      2,
+      "single"
+    ],
+    "linebreak-style": [
+      2,
+      "unix"
+    ],
+    "semi": [
+      2,
+      "never"
+    ],
+    "curly": 0,
+    "new-parens": 0,
+    "no-shadow": 0,
+    "comma-dangle": [
+      2,
+      "always-multiline"
+    ]
+  },
+  "env": {
+    "es6": 1,
+    "browser": 1,
+    "node": 1
+  },
+  "ecmaFeatures": {
+    "jsx": 1,
+    "modules": 1,
+    "no-var": 1,
+    "object-shorthand": [
+      2,
+      "always"
+    ],
+    "generator-star-spacing": [
+      2,
+      "before"
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "email-summarizer-frontend", 
+  "scripts": {
+    "dev": "npx live-server --port=8080"
+  }
+}

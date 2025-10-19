@@ -47,8 +47,8 @@ Kod yapısını görsel olarak analiz eden modern bir web uygulaması. JavaScrip
 
 ```bash
 # Repository'yi klonlayın
-git clone https://github.com/Can-Ozan/syntax-visualizer-hub.git
-cd syntax-visualizer-hub
+git clone https://github.com/Can-Ozan/30-days-of-typescript/tree/master/Day-12-Code-Pattern-Visualizer.git
+cd Code-Pattern-Visualizer
 
 # Bağımlılıkları yükleyin
 npm install

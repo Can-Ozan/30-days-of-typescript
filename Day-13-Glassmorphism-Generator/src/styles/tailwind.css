@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Radius Variable - Missing in Original */
+    --radius: 0.5rem; /* 8px */
+    
+    /* Core Background Colors */
+    --color-background: #0F172A; /* slate-900 */
+    --color-foreground: #F8FAFC; /* slate-50 */
+    --color-surface: #1E293B; /* slate-800 */
+    --color-surface-foreground: #F8FAFC; /* slate-50 */
+    
+    /* Border and Input Colors */
+    --color-border: rgba(255, 255, 255, 0.1); /* white with 10% opacity */
+    --color-input: #1E293B; /* slate-800 */
+    --color-ring: #3B82F6; /* blue-500 */
+    
+    /* Card and Popover Colors */
+    --color-card: rgba(30, 41, 59, 0.8); /* slate-800 with 80% opacity */
+    --color-card-foreground: #F8FAFC; /* slate-50 */
+    --color-popover: rgba(30, 41, 59, 0.95); /* slate-800 with 95% opacity */
+    --color-popover-foreground: #F8FAFC; /* slate-50 */
+    
+    /* Muted Colors */
+    --color-muted: #334155; /* slate-700 */
+    --color-muted-foreground: #94A3B8; /* slate-400 */
+    
+    /* Primary Brand Colors */
+    --color-primary: #3B82F6; /* blue-500 */
+    --color-primary-foreground: #FFFFFF; /* white */
+    
+    /* Secondary Colors */
+    --color-secondary: #8B5CF6; /* violet-500 */
+    --color-secondary-foreground: #FFFFFF; /* white */
+    
+    /* Accent Colors */
+    --color-accent: #06B6D4; /* cyan-500 */
+    --color-accent-foreground: #FFFFFF; /* white */
+    
+    /* Success Colors */
+    --color-success: #10B981; /* emerald-500 */
+    --color-success-foreground: #FFFFFF; /* white */
+    
+    /* Warning Colors */
+    --color-warning: #F59E0B; /* amber-500 */
+    --color-warning-foreground: #FFFFFF; /* white */
+    
+    /* Error/Destructive Colors */
+    --color-error: #EF4444; /* red-500 */
+    --color-error-foreground: #FFFFFF; /* white */
+    --color-destructive: #EF4444; /* red-500 */
+    --color-destructive-foreground: #FFFFFF; /* white */
+    
+    /* Glass Effect Variables */
+    --glass-blur: 16px;
+    --glass-opacity: 0.1;
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Dark mode theme support */
+  .dark {
+    --color-background: #020817; /* slate-950 */
+    --color-foreground: #F1F5F9; /* slate-100 */
+    --color-surface: #0F172A; /* slate-900 */
+    --color-surface-foreground: #F1F5F9; /* slate-100 */
+    
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-input: #0F172A; /* slate-900 */
+    --color-ring: #2563EB; /* blue-600 */
+    
+    --color-card: rgba(15, 23, 42, 0.9); /* slate-900 with 90% opacity */
+    --color-card-foreground: #F1F5F9; /* slate-100 */
+    --color-popover: rgba(15, 23, 42, 0.98); /* slate-900 with 98% opacity */
+    --color-popover-foreground: #F1F5F9; /* slate-100 */
+    
+    --color-muted: #1E293B; /* slate-800 */
+    --color-muted-foreground: #64748B; /* slate-500 */
+    
+    --color-primary: #2563EB; /* blue-600 */
+    --color-secondary: #7C3AED; /* violet-600 */
+    --color-accent: #0891B2; /* cyan-600 */
+    --color-success: #059669; /* emerald-600 */
+    --color-warning: #D97706; /* amber-600 */
+    --color-error: #DC2626; /* red-600 */
+    --color-destructive: #DC2626; /* red-600 */
+    
+    /* Enhanced glass effect for dark mode */
+    --glass-blur: 20px;
+    --glass-opacity: 0.05;
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Enhanced glass morphism utility classes */
+  .glass-panel {
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .glass-panel:hover {
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+  }
+  
+  .glass-light {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .glass-light:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Dark mode glass panels */
+  .dark .glass-panel {
+    background: rgba(15, 23, 42, 0.9);
+  }
+  
+  .dark .glass-panel:hover {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  .dark .glass-light {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .dark .glass-light:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  
+  /* Custom scrollbar for glass panels */
+  .glass-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .glass-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+  }
+  
+  .glass-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .glass-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Dark mode scrollbar */
+  .dark .glass-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  
+  .dark .glass-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .dark .glass-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Theme transition animations */
+  * {
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Focus states with theme support */
+  .focus-visible\:ring-2:focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--color-ring);
+  }
+}

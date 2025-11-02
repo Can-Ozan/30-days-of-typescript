@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Code Refactorer</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f0f0f0;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+    textarea {
+      width: 400px;
+      height: 400px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Smart Code Refactorer</h1>
+  <div class="container">
+    <textarea id="before" placeholder="Enter your code here..."></textarea>
+    <textarea id="after" readonly placeholder="Refactored code will appear here..."></textarea>
+  </div>
+  <button id="refactor">Refactor</button>
+  <script src="dist/bundle.js"></script>
+</body>
+</html>

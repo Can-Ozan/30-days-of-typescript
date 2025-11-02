@@ -1,0 +1,19 @@
+{
+  "name": "day-31-smart-code-refactorer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@babel/parser": "^7.28.5",
+    "esbuild": "^0.25.12",
+    "recast": "^0.23.11",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,344 @@
+:root {
+    /* Açık Tema */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-card: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --border: #e2e8f0;
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+    --today-bg: #ef4444;
+    --today-text: #ffffff;
+    --weekend-text: #ef4444;
+    --selected-bg: #3b82f6;
+    --selected-text: #ffffff;
+    --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+[data-theme="dark"] {
+    /* Koyu Tema */
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #64748b;
+    --accent: #60a5fa;
+    --accent-hover: #3b82f6;
+    --border: #334155;
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+    --today-bg: #ef4444;
+    --today-text: #ffffff;
+    --weekend-text: #f87171;
+    --selected-bg: #60a5fa;
+    --selected-text: #0f172a;
+    --gradient: linear-gradient(135deg, #4f46e5 0%, #7e22ce 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--gradient);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.container {
+    width: 100%;
+    max-width: 440px;
+}
+
+.widget {
+    background: var(--bg-card);
+    border-radius: 24px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 24px 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.theme-toggle {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.theme-toggle:hover {
+    background: var(--accent);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Saat Bölümü */
+.clock-section {
+    padding: 32px 24px;
+    text-align: center;
+    background: var(--bg-secondary);
+    margin: 16px 24px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+}
+
+.time-display {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 4px;
+    line-height: 1;
+}
+
+.time-separator {
+    color: var(--accent);
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.seconds {
+    font-size: 2.5rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.ampm {
+    font-size: 1.2rem;
+    margin-left: 8px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.date-display {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Takvim Bölümü */
+.calendar-section {
+    padding: 0 24px 24px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.nav-btn {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+}
+
+.nav-btn:hover {
+    background: var(--accent);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Takvim Izgara */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.day-header {
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    padding: 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.day-cell {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    color: var(--text-primary);
+    position: relative;
+    border: 2px solid transparent;
+}
+
+.day-cell:hover:not(.other-month) {
+    background: var(--bg-secondary);
+    transform: translateY(-2px);
+}
+
+.day-cell.other-month {
+    color: var(--text-muted);
+    cursor: default;
+}
+
+.day-cell.weekend {
+    color: var(--weekend-text);
+}
+
+.day-cell.today {
+    background: var(--today-bg);
+    color: var(--today-text);
+    font-weight: 700;
+    border-color: var(--today-bg);
+}
+
+.day-cell.selected {
+    background: var(--selected-bg);
+    color: var(--selected-text);
+    font-weight: 600;
+}
+
+.calendar-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.today-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.today-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+/* İstatistikler */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 20px 24px;
+    background: var(--bg-secondary);
+    margin: 0 24px 24px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .container {
+        max-width: 100%;
+    }
+    
+    .time-display {
+        font-size: 2.8rem;
+    }
+    
+    .seconds {
+        font-size: 2rem;
+    }
+    
+    .date-display {
+        font-size: 1.1rem;
+    }
+    
+    .calendar-section {
+        padding: 0 16px 20px;
+    }
+    
+    .stats-section {
+        margin: 0 16px 20px;
+        padding: 16px;
+    }
+    
+    .stat-value {
+        font-size: 1.3rem;
+    }
+}

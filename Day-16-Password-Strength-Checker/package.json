@@ -1,0 +1,24 @@
+{
+  "name": "password-strength-checker",
+  "version": "1.0.0",
+  "description": "Modern, real-time password strength analyzer built with TypeScript",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "password",
+    "strength",
+    "checker",
+    "security",
+    "typescript"
+  ],
+  "author": "Password Strength Checker",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0"
+  }
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker - Parola Güçlülük Analiz Aracı</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-shield-alt"></i> Parola Güçlülük Analiz Aracı</h1>
+            <p class="subtitle">Parolanızın güvenlik seviyesini anında kontrol edin ve güvenliğinizi artırın</p>
+        </header>
+
+        <main class="main-content">
+            <div class="password-input-container">
+                <div class="input-wrapper">
+                    <i class="fas fa-key icon-left"></i>
+                    <input type="password" id="passwordInput" placeholder="Parolanızı girin...">
+                    <button type="button" id="togglePassword" class="toggle-password-btn" aria-label="Parolayı göster/gizle">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <div class="input-hint">
+                    <i class="fas fa-info-circle"></i> Parolanızı yazmaya başlayın, analiz otomatik olarak başlayacaktır
+                </div>
+            </div>
+
+            <div class="strength-container">
+                <div class="strength-header">
+                    <h2>Parola Güç Seviyesi</h2>
+                    <div class="score-display">
+                        <span id="scoreValue">0</span><span>/100</span>
+                    </div>
+                </div>
+                
+                <div class="strength-meter">
+                    <div class="strength-bar" id="strengthBar"></div>
+                </div>
+                
+                <div class="strength-label">
+                    <span id="strengthLevel">Değerlendiriliyor...</span>
+                </div>
+            </div>
+
+            <div class="analysis-container">
+                <div class="criteria-section">
+                    <h3><i class="fas fa-check-circle"></i> Güvenlik Kriterleri</h3>
+                    <ul class="criteria-list" id="criteriaList">
+                        <!-- Kriterler buraya dinamik olarak eklenecek -->
+                    </ul>
+                </div>
+
+                <div class="feedback-section">
+                    <h3><i class="fas fa-comment-dots"></i> Analiz Sonuçları</h3>
+                    <div class="feedback-content" id="feedbackContent">
+                        <p class="initial-message">Parolanızı girmeye başladığınızda detaylı analiz sonuçları burada görünecektir.</p>
+                    </div>
+                </div>
+
+                <div class="suggestions-section">
+                    <h3><i class="fas fa-lightbulb"></i> Güvenlik Önerileri</h3>
+                    <div class="suggestions-content" id="suggestionsContent">
+                        <p class="initial-message">Parolanız analiz edildikten sonra güvenliği artırmak için öneriler burada görünecektir.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="advanced-features">
+                <button type="button" id="generatePassword" class="btn-generate">
+                    <i class="fas fa-random"></i> Güçlü Parola Oluştur
+                </button>
+                
+                <div class="time-to-crack">
+                    <h4><i class="fas fa-clock"></i> Tahmini Kırılma Süresi</h4>
+                    <p id="timeToCrack">Parola girmediniz</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Bu araç tamamen tarayıcınızda çalışır. Parolanız hiçbir sunucuya gönderilmez veya kaydedilmez.</p>
+            <p class="copyright">© 2023 Password Strength Checker | Geliştirici Kalitesinde Güvenlik Analizi</p>
+        </footer>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

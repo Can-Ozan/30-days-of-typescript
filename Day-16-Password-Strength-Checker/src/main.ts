@@ -1,11 +1,11 @@
-import { PasswordChecker, PasswordAnalysis } from './PasswordChecker';
+import { PasswordChecker } from './PasswordChecker';
 import { StrengthMeter } from './StrengthMeter';
 import { UI } from './UI';
 
 /**
- * Rastgele güçlü parola oluşturucu
- * @param length Parola uzunluğu
- * @returns Rastgele parola
+ * Generate random strong password
+ * @param length Password length
+ * @returns Random password
  */
 function generateRandomPassword(length: number = 16): string {
     const charset = {
@@ -15,7 +15,7 @@ function generateRandomPassword(length: number = 16): string {
         special: '!@#$%^&*()_+-=[]{}|;:,.<>?'
     };
     
-    // Tüm karakterleri birleştir
+    // All characters combined
     const allChars = 
         charset.lowercase + 
         charset.uppercase + 
@@ -24,34 +24,30 @@ function generateRandomPassword(length: number = 16): string {
     
     let password = '';
     
-    // Her kategoriden en az bir karakter garantile
+    // Ensure at least one character from each category
     password += getRandomChar(charset.lowercase);
     password += getRandomChar(charset.uppercase);
     password += getRandomChar(charset.numbers);
     password += getRandomChar(charset.special);
     
-    // Kalan karakterleri rastgele seç
+    // Fill remaining characters randomly
     for (let i = 4; i < length; i++) {
         password += getRandomChar(allChars);
     }
     
-    // Karakterleri karıştır
+    // Shuffle the characters
     return shuffleString(password);
 }
 
 /**
- * Rastgele karakter seçer
- * @param str Karakter seti
- * @returns Rastgele karakter
+ * Get random character from string
  */
 function getRandomChar(str: string): string {
     return str[Math.floor(Math.random() * str.length)];
 }
 
 /**
- * String içindeki karakterleri karıştırır
- * @param str Karıştırılacak string
- * @returns Karıştırılmış string
+ * Shuffle string characters
  */
 function shuffleString(str: string): string {
     const array = str.split('');
@@ -65,17 +61,18 @@ function shuffleString(str: string): string {
 }
 
 /**
- * Ana uygulama sınıfı
+ * Main application class
  */
 class PasswordStrengthCheckerApp {
-    private passwordInput: HTMLInputElement;
-    private togglePasswordBtn: HTMLButtonElement;
-    private generatePasswordBtn: HTMLButtonElement;
+    // Definite assignment assertion
+    private passwordInput!: HTMLInputElement;
+    private togglePasswordBtn!: HTMLButtonElement;
+    private generatePasswordBtn!: HTMLButtonElement;
     
-    private strengthMeter: StrengthMeter;
-    private ui: UI;
+    private strengthMeter!: StrengthMeter;
+    private ui!: UI;
     
-    // Analiz için debounce timer
+    // Analysis debounce timer
     private analysisTimer: number | null = null;
     
     constructor() {
@@ -86,16 +83,25 @@ class PasswordStrengthCheckerApp {
     }
     
     /**
-     * DOM elementlerini başlatır
+     * Initialize DOM elements
      */
     private initializeElements(): void {
-        this.passwordInput = document.getElementById('passwordInput') as HTMLInputElement;
-        this.togglePasswordBtn = document.getElementById('togglePassword') as HTMLButtonElement;
-        this.generatePasswordBtn = document.getElementById('generatePassword') as HTMLButtonElement;
+        const passwordInput = document.getElementById('passwordInput');
+        const togglePasswordBtn = document.getElementById('togglePassword');
+        const generatePasswordBtn = document.getElementById('generatePassword');
+        
+        // Check if elements exist
+        if (!passwordInput || !togglePasswordBtn || !generatePasswordBtn) {
+            throw new Error('Required DOM elements not found');
+        }
+        
+        this.passwordInput = passwordInput as HTMLInputElement;
+        this.togglePasswordBtn = togglePasswordBtn as HTMLButtonElement;
+        this.generatePasswordBtn = generatePasswordBtn as HTMLButtonElement;
     }
     
     /**
-     * Modülleri başlatır
+     * Initialize modules
      */
     private initializeModules(): void {
         this.strengthMeter = new StrengthMeter(
@@ -113,32 +119,32 @@ class PasswordStrengthCheckerApp {
     }
     
     /**
-     * Olay dinleyicilerini kurar
+     * Setup event listeners
      */
     private setupEventListeners(): void {
-        // Parola input değişikliği
+        // Password input change
         this.passwordInput.addEventListener('input', () => {
             this.handlePasswordChange();
         });
         
-        // Parola görünürlüğü toggle
+        // Password visibility toggle
         this.togglePasswordBtn.addEventListener('click', () => {
             this.togglePasswordVisibility();
         });
         
-        // Rastgele parola oluşturma
+        // Random password generation
         this.generatePasswordBtn.addEventListener('click', () => {
             this.generateAndSetPassword();
         });
         
-        // Sayfa yüklendiğinde parola input'una odaklan
+        // Focus on input when page loads
         window.addEventListener('DOMContentLoaded', () => {
             this.passwordInput.focus();
         });
     }
     
     /**
-     * Başlangıç UI'ını ayarlar
+     * Initialize UI
      */
     private initializeUI(): void {
         this.ui.reset();
@@ -146,45 +152,45 @@ class PasswordStrengthCheckerApp {
     }
     
     /**
-     * Parola değişikliğini işler (debounce ile)
+     * Handle password change with debounce
      */
     private handlePasswordChange(): void {
-        // Önceki timer'ı temizle
+        // Clear previous timer
         if (this.analysisTimer) {
             clearTimeout(this.analysisTimer);
         }
         
-        // Yeni timer ayarla (100ms debounce)
+        // Set new timer (100ms debounce)
         this.analysisTimer = window.setTimeout(() => {
             this.analyzePassword();
         }, 100);
     }
     
     /**
-     * Parolayı analiz eder ve UI'ı günceller
+     * Analyze password and update UI
      */
     private analyzePassword(): void {
         const password = this.passwordInput.value;
         
-        // Parola boşsa UI'ı sıfırla
+        // Reset UI if password is empty
         if (!password || password.length === 0) {
             this.ui.reset();
             this.strengthMeter.reset();
             return;
         }
         
-        // Parolayı analiz et
+        // Analyze password
         const analysis = PasswordChecker.analyze(password);
         
-        // Güç göstergesini güncelle
+        // Update strength meter
         this.strengthMeter.update(analysis.score, analysis.level);
         
-        // UI'ı güncelle
+        // Update UI
         this.ui.updateAll(analysis, password);
     }
     
     /**
-     * Parola görünürlüğünü değiştirir
+     * Toggle password visibility
      */
     private togglePasswordVisibility(): void {
         const type = this.passwordInput.type;
@@ -193,48 +199,48 @@ class PasswordStrengthCheckerApp {
         if (type === 'password') {
             this.passwordInput.type = 'text';
             icon.className = 'fas fa-eye-slash';
-            this.togglePasswordBtn.setAttribute('aria-label', 'Parolayı gizle');
+            this.togglePasswordBtn.setAttribute('aria-label', 'Hide password');
         } else {
             this.passwordInput.type = 'password';
             icon.className = 'fas fa-eye';
-            this.togglePasswordBtn.setAttribute('aria-label', 'Parolayı göster');
+            this.togglePasswordBtn.setAttribute('aria-label', 'Show password');
         }
     }
     
     /**
-     * Rastgele parola oluşturur ve input'a yerleştirir
+     * Generate random password and set it in input
      */
     private generateAndSetPassword(): void {
         const randomPassword = generateRandomPassword(16);
         this.passwordInput.value = randomPassword;
         this.passwordInput.type = 'text';
         
-        // İkonu güncelle
+        // Update icon
         const icon = this.togglePasswordBtn.querySelector('i') as HTMLElement;
         icon.className = 'fas fa-eye-slash';
-        this.togglePasswordBtn.setAttribute('aria-label', 'Parolayı gizle');
+        this.togglePasswordBtn.setAttribute('aria-label', 'Hide password');
         
-        // Parolayı analiz et
+        // Analyze the password
         this.analyzePassword();
         
-        // Parolayı seç (kopyalamayı kolaylaştırmak için)
+        // Select the password for easy copying
         this.passwordInput.select();
         
-        // Kullanıcıya bilgi ver
-        this.showToast('Güçlü bir parola oluşturuldu!');
+        // Show notification
+        this.showToast('Strong password generated!');
     }
     
     /**
-     * Toast mesajı gösterir
-     * @param message Gösterilecek mesaj
+     * Show toast message
+     * @param message Message to show
      */
     private showToast(message: string): void {
-        // Toast elementini oluştur
+        // Create toast element
         const toast = document.createElement('div');
         toast.className = 'toast-message fade-in';
         toast.textContent = message;
         
-        // Stil ekle
+        // Add styles
         toast.style.cssText = `
             position: fixed;
             bottom: 20px;
@@ -249,10 +255,10 @@ class PasswordStrengthCheckerApp {
             max-width: 300px;
         `;
         
-        // Sayfaya ekle
+        // Add to page
         document.body.appendChild(toast);
         
-        // 3 saniye sonra kaldır
+        // Remove after 3 seconds
         setTimeout(() => {
             toast.style.opacity = '0';
             toast.style.transition = 'opacity 0.3s ease';
@@ -266,10 +272,10 @@ class PasswordStrengthCheckerApp {
     }
 }
 
-// Uygulamayı başlat
+// Start the application
 const app = new PasswordStrengthCheckerApp();
 
-// Global scope'a ekle (geliştirme için)
+// Add to global scope for development
 declare global {
     interface Window {
         app: PasswordStrengthCheckerApp;
